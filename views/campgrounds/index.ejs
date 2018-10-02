@@ -1,0 +1,38 @@
+  <% include ../partials/header%>
+  
+  
+  
+  
+  
+    <div class = "container">
+      <div class = "container"><!-- here container is added in the jumbotron so that text inside jumbotron don't move towards extreme left on resizing window-->
+    <header class ="jumbotron">
+      <h1>Welcome to YelpCamp!</h1>
+    <p>View our hand-picked campground's from all over the world </p>
+    <p><a class="btn btn-primary btn-lg" href="/campgrounds/new">Add new campground</a></p>
+    </div>
+    </header><!--"header" same like div but have some semantics feature-->
+      
+      
+           
+        <div class = "row text-center " style ="display:flex; flex-wrap:wrap;"><!--class = row to for grid layout,"display:flex; flex-wrap:wrap;"--this keeps the images inline even if there is a height difference in images-->
+        <% campgrounds.forEach(function(campground){ %><!-- class text-center moves the text(here name of the campgrounds)in middle-->
+        
+        
+        <div class="col-md-3 col-sm-6"><!--so that each image come in a separate column this div is applied insie forEach loop-->
+       <div class ="thumbnail"><img src = "<%=campground.image %>" ><!--class thumbnail gives card view to images-->
+        <div class ="caption"> <h4><%= campground.name  %>  </h4></div><!--class caption gives the name a caption effect-->
+        
+      </div>
+      <p>
+        <a href="/campgrounds/<%=campground._id%>" class="btn btn-primary">More Info</a>
+      </p>
+      </div>
+          
+      <% });  %>
+      
+      </div>
+      
+      </div>
+      
+    <% include ../partials/footer%>
